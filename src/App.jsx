@@ -8,7 +8,15 @@ const TABS = [
 ];
 
 function App() {
-  const [activeTab, setActiveTab] = useState("book");
+  const [activeTab, setActiveTab] = useState(() => {
+    const hash = window.location.hash.replace("#", "");
+    return TABS.find((t) => t.id === hash) ? hash : "book";
+  });
+
+  const handleTabChange = (id) => {
+    setActiveTab(id);
+    window.location.hash = id;
+  };
 
   return (
     <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
@@ -18,7 +26,7 @@ function App() {
           {TABS.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => handleTabChange(tab.id)}
               style={{
                 ...tabBtn,
                 ...(activeTab === tab.id ? tabBtnActive : {}),
