@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(ellipse at center, #f5f0eb 0%, #e8e0d8 50%, #d4ccc4 100%);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.outline-text {
+  -webkit-text-stroke: 1px rgba(26, 26, 26, 0.08);
+  color: transparent;
+}
+
+@keyframes horizontal-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+@keyframes horizontal-scroll-2 {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+::-webkit-scrollbar {
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(26, 26, 26, 0.15);
+  border-radius: 2px;
+}
