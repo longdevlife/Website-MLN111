@@ -1,8 +1,12 @@
 import { Environment, Float, OrbitControls } from "@react-three/drei";
 import { Book } from "./Book";
+import { ModelShowcase } from "./ModelShowcase";
+import { PageParticles } from "./PageParticles";
+
 export const Experience = () => {
   return (
     <>
+      {/* Book — always centered */}
       <Float
         rotation-x={-Math.PI / 4}
         floatIntensity={1}
@@ -10,9 +14,14 @@ export const Experience = () => {
         rotationIntensity={0.1}
       >
         <Book />
+        <PageParticles />
       </Float>
+
+      {/* Model — floats ABOVE the book, centered */}
+      <ModelShowcase />
+
       <OrbitControls />
-      <Environment preset="studio"></Environment>
+      <Environment preset="studio" />
       <directionalLight
         position={[2, 5, 2]}
         intensity={2.5}
