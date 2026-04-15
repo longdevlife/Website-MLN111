@@ -151,7 +151,7 @@ export default function GearOfEra() {
   };
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100vh', background: '#000', color: '#fff', overflow: 'hidden' }}>
+    <div style={{ position: 'relative', width: '100%', height: '100vh', background: '#000', color: '#fff', overflow: 'clip' }}>
       <style>{`
         @keyframes twinkle { from { opacity: 0.1 } to { opacity: 1 } }
         @keyframes pulse-bg { from { opacity: 0.2 } to { opacity: 0.5 } }

@@ -10,8 +10,7 @@ export const GamePage = () => {
   useScrollReveal();
 
   return (
-    <div className="theory-page-container" style={{ width: '100%', height: '100%', overflowY: 'auto', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-      <Navbar />
+    <div className="theory-page-container" style={{ width: '100%', minHeight: '100vh', scrollBehavior: 'smooth' }}>
       <Hero />
 
 

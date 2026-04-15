@@ -154,10 +154,6 @@ export const UI = () => {
         {/* ── Bottom: Floating Nav Island ── */}
         <div className="w-full pointer-events-auto flex justify-center pb-6">
           <div className="book-nav rounded-full px-2 py-2 flex flex-col items-center gap-0" style={{ maxWidth: '90vw' }}>
-            {/* Progress bar */}
-            <div className="book-progress-track w-full" style={{ minWidth: '280px' }}>
-              <div className="book-progress-fill" style={{ width: `${progress}%` }} />
-            </div>
 
             {/* Nav buttons */}
             <div className="flex items-center gap-1 overflow-x-auto px-1">

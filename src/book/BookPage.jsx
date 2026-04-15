@@ -12,7 +12,7 @@ export const BookPage = () => {
     <>
       {!isStarted && <IntroScreen onEnter={() => setIsStarted(true)} />}
 
-      <div style={{ opacity: isStarted ? 1 : 0, transition: 'opacity 1s ease', width: '100%', height: '100%', pointerEvents: isStarted ? 'auto' : 'none' }}>
+      <div style={{ opacity: isStarted ? 1 : 0, transition: 'opacity 1s ease', width: '100%', height: '100vh', overflow: 'hidden', pointerEvents: isStarted ? 'auto' : 'none' }}>
         <UI />
         <Loader />
         <Canvas

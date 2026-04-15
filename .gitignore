@@ -25,3 +25,6 @@ dist-ssr
 
 # Markdown files
 *.md
+
+# AI Skills Folder
+skills/

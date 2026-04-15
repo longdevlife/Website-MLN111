@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { BookPage } from "./book/BookPage";
 import { GamePage } from "./game/GamePage";
+import { AIUsagePage } from "./ai-usage/AIUsagePage";
+import Navbar from "./game/sections/Navbar";
 
 const TABS = [
   { id: "book", label: "Sách 3D" },
   { id: "game", label: "Quiz Game" },
+  { id: "ai", label: "AI Usage" },
 ];
 
 function getActiveTab() {
@@ -35,11 +38,13 @@ function App() {
   };
 
   return (
-    <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
+    <div style={{ width: "100%", minHeight: "100vh", position: "relative", overflowX: "hidden" }}>
+      <Navbar activeTab={activeTab} onTabChange={handleTabChange} />
       {/* Tab Content */}
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: "100%", minHeight: "100vh" }}>
         {activeTab === "book" && <BookPage />}
         {activeTab === "game" && <GamePage />}
+        {activeTab === "ai" && <AIUsagePage />}
       </div>
     </div>
   );
