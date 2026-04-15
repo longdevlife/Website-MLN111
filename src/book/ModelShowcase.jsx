@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { useGLTF, Sparkles } from "@react-three/drei";
 import { useAtom } from "jotai";
 import { MeshStandardMaterial, Color, Box3, Vector3 } from "three";
-import { pageAtom } from "./UI";
+import { pageAtom, viewModeAtom } from "./UI";
 
 /* ── Shared Materials ── */
 const matAccent = new MeshStandardMaterial({ color: new Color("#C5272D"), roughness: 0.35, metalness: 0.1 });
@@ -253,7 +253,8 @@ const GlowRing = ({ visible }) => {
    ══════════════════════════════════════════════ */
 export const ModelShowcase = () => {
   const [page] = useAtom(pageAtom);
-  const hasModel = page >= 1 && page <= 5;
+  const [viewMode] = useAtom(viewModeAtom);
+  const hasModel = page >= 1 && page <= 5 && viewMode === "showcase";
 
   const groupRef = useRef();
   const prog = useRef(0);

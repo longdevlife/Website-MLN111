@@ -1,27 +1,34 @@
 import { Loader } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { Experience } from "./Experience";
 import { UI } from "./UI";
+import { IntroScreen } from "./IntroScreen";
 
 export const BookPage = () => {
+  const [isStarted, setIsStarted] = useState(false);
+
   return (
     <>
-      <UI />
-      <Loader />
-      <Canvas
-        shadows
-        camera={{
-          position: [-0.5, 1, window.innerWidth > 800 ? 4 : 9],
-          fov: 45,
-        }}
-      >
-        <group position-y={0}>
-          <Suspense fallback={null}>
-            <Experience />
-          </Suspense>
-        </group>
-      </Canvas>
+      {!isStarted && <IntroScreen onEnter={() => setIsStarted(true)} />}
+
+      <div style={{ opacity: isStarted ? 1 : 0, transition: 'opacity 1s ease', width: '100%', height: '100vh', overflow: 'hidden', pointerEvents: isStarted ? 'auto' : 'none' }}>
+        <UI />
+        <Loader />
+        <Canvas
+          shadows
+          camera={{
+            position: [-0.5, 1, window.innerWidth > 800 ? 4 : 9],
+            fov: 45,
+          }}
+        >
+          <group position-y={0}>
+            <Suspense fallback={null}>
+              <Experience />
+            </Suspense>
+          </group>
+        </Canvas>
+      </div>
     </>
   );
 };
