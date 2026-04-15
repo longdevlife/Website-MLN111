@@ -1,5 +1,5 @@
 import { atom, useAtom } from "jotai";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // 10 pages: cover(front) + 4 spreads (8 inner pages) + back-cover(back)
 // Each "page" object = 1 physical sheet with front and back
@@ -43,6 +43,7 @@ const pageLabels = [
 
 export const UI = () => {
   const [page, setPage] = useAtom(pageAtom);
+  const [navVisible, setNavVisible] = useState(false);
 
   useEffect(() => {
     const audio = new Audio("/audios/page-flip-01a.mp3");
@@ -76,9 +77,25 @@ export const UI = () => {
           </div>
         </div>
 
-        {/* Bottom Nav */}
-        <div className="w-full overflow-auto pointer-events-auto flex justify-center">
-          <div className="overflow-auto flex items-center gap-3 max-w-full p-6">
+        {/* Bottom Nav – hover zone (pointer-events-auto so hover works) */}
+        <div
+          className="w-full pointer-events-auto flex justify-center"
+          onMouseEnter={() => setNavVisible(true)}
+          onMouseLeave={() => setNavVisible(false)}
+        >
+          {/* Invisible hover trigger strip */}
+          <div className="absolute bottom-0 left-0 w-full h-20" />
+
+          {/* Nav buttons */}
+          <div
+            className="overflow-auto flex items-center gap-3 max-w-full p-6"
+            style={{
+              transition: 'opacity 0.3s ease, transform 0.3s ease',
+              opacity: navVisible ? 1 : 0,
+              transform: navVisible ? 'translateY(0)' : 'translateY(12px)',
+              pointerEvents: navVisible ? 'auto' : 'none',
+            }}
+          >
             {[...pages].map((_, index) => (
               <button
                 key={index}
