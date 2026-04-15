@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 
 const NAV_LINKS = [
   { href: '#hero', label: 'Trang chủ' },
+  { href: '#quiz', label: 'Quiz Game' },
   { href: '#ton-tai', label: 'Tồn tại XH' },
-  { href: '#y-thuc', label: 'Ý thức XH' },
-  { href: '#bien-chung', label: 'Biện chứng' },
+  { href: '#book', label: '3D Book' },
+  
+ 
 ];
 
 export default function Navbar() {

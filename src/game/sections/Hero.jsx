@@ -1,47 +1,65 @@
-// Hero section – landing banner
+// Hero section – redesigned to match reference layout
 export default function Hero() {
-  const particles = Array.from({ length: 18 }, (_, i) => ({
-    id: i,
-    left: `${Math.random() * 100}%`,
-    delay: `${Math.random() * 7}s`,
-    duration: `${6 + Math.random() * 6}s`,
-  }));
-
   return (
-    <section className="hero" id="hero">
-      {/* Floating particles */}
-      <div className="hero-particles">
-        {particles.map((p) => (
-          <span
-            key={p.id}
-            className="hero-particle"
-            style={{ left: p.left, animationDelay: p.delay, animationDuration: p.duration }}
-          />
-        ))}
+    <section className="hero-v2" id="hero">
+      {/* Background painting */}
+      <div className="hero-v2-bg" />
+
+      {/* Dark gradient overlay (stronger on left for readability) */}
+      <div className="hero-v2-overlay" />
+
+      {/* Portrait image on the right */}
+      <div className="hero-v2-portrait-wrap">
+        <img
+          src="https://i.pinimg.com/736x/c2/3d/91/c23d912b44b8ead2e34d1aa7608d12a5.jpg"
+          alt="Karl Marx portrait"
+          className="hero-v2-portrait"
+        />
+        <div className="hero-v2-portrait-fade" />
       </div>
 
-      <span className="hero-tag">📚 Triết học Mác – Lê-nin &nbsp;|&nbsp; Tiết 46 – 48</span>
+      {/* Left content */}
+      <div className="hero-v2-content">
+        {/* Top badge */}
+        <div className="hero-v2-badge">
+          <span>3W_MLN111_07</span>
+          <span className="badge-dot">·</span>
+          <span>NHÓM 6</span>
+        </div>
 
-      <h1 className="hero-title">
-        Tồn tại xã hội &amp;<br />
-        <span className="gold-text">Ý thức xã hội</span>
-      </h1>
+        {/* Headline */}
+        <h1 className="hero-v2-title">
+          <span className="hero-v2-title-sm">Triết học</span>
+          <span className="hero-v2-title-lg">Mác–Lênin</span>
+        </h1>
 
-      <p className="hero-subtitle">
-        "Không phải ý thức của con người quyết định tồn tại của họ, mà ngược lại,
-        chính tồn tại xã hội của họ quyết định ý thức của họ."
-        <br />— <em>C. Mác</em>
-      </p>
+        {/* Subtitle */}
+        <p className="hero-v2-subtitle">Tồn tại xã hội &amp; Ý thức xã hội</p>
 
-      <div className="hero-chapters">
-        <a href="#ton-tai" className="hero-chapter-pill">📖 Tiết 46 – Tồn tại XH</a>
-        <a href="#y-thuc" className="hero-chapter-pill">🧠 Tiết 47 – Ý thức XH</a>
-        <a href="#bien-chung" className="hero-chapter-pill">⚡ Tiết 48 – Biện chứng</a>
+        {/* Description */}
+        <p className="hero-v2-desc">
+          Phân tích toàn bộ sinh hoạt vật chất và điều kiện sinh hoạt của xã
+          hội, mối quan hệ biện chứng giữa tồn tại xã hội và ý thức xã hội
+          trong chủ nghĩa Mác – Lênin.
+        </p>
+
+        {/* CTA */}
+        <div className="hero-v2-actions">
+          <a href="#quiz" className="hero-v2-btn primary">
+            Chơi Quiz ngay <span className="btn-arrow">→</span>
+          </a>
+          <a href="#ton-tai" className="hero-v2-btn secondary">
+            Khám phá lý thuyết
+          </a>
+        </div>
+
+        {/* Chapter pills */}
+        <div className="hero-v2-pills">
+          <a href="#ton-tai" className="hero-v2-pill">📖 Tiết 46 – Tồn tại XH</a>
+          <a href="#y-thuc" className="hero-v2-pill">🧠 Tiết 47 – Ý thức XH</a>
+          <a href="#bien-chung" className="hero-v2-pill">⚡ Tiết 48 – Biện chứng</a>
+        </div>
       </div>
-
-      <a href="#ton-tai" className="hero-cta">
-        Khám phá ngay ↓
-      </a>
     </section>
   );
 }
