@@ -16,11 +16,17 @@ export const BookPage = () => {
         <UI />
         <Loader />
         <Canvas
-          shadows
+          shadows={false}
+          dpr={[1, 1.5]}
           camera={{
             position: [-0.5, 1, window.innerWidth > 800 ? 4 : 9],
             fov: 45,
           }}
+          gl={{
+            antialias: true,
+            powerPreference: "high-performance",
+          }}
+          performance={{ min: 0.5 }}
         >
           <group position-y={0}>
             <Suspense fallback={null}>

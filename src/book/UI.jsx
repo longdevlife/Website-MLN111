@@ -6,12 +6,12 @@ export const pageAtom = atom(0);
 export const viewModeAtom = atom("showcase"); // "showcase" | "reading"
 
 export const pages = [
-  { front: "book-cover", back: "page1-intro" },
-  { front: "page2-theory1", back: "page3-theory2" },
-  { front: "page4-scenario1", back: "page5-result1" },
-  { front: "page6-scenario2", back: "page7-result2" },
-  { front: "page8-scenario3", back: "page9-result3" },
-  { front: "page10-conclusion", back: "book-back" },
+  { front: "Coverpage_open", back: "Open 1" },
+  { front: "Open 2", back: "46_Page_1" },
+  { front: "46_Page_2", back: "47_Page_1" },
+  { front: "47_Page_2", back: "48_Page_1" },
+  { front: "48_Page_2", back: "Close 1" },
+  { front: "Close 2", back: "Coverpage_close" },
 ];
 
 const pageLabels = [

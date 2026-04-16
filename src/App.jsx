@@ -19,7 +19,7 @@ function getActiveTab() {
 
 function App() {
   const [activeTab, setActiveTab] = useState(getActiveTab);
-  const [navHovered, setNavHovered] = useState(false);
+
 
   // React to browser back/forward and hash changes
   useEffect(() => {
@@ -50,5 +50,5 @@ function App() {
   );
 }
 
-/* ── Inline Styles ─────────────────────────── */
+
 export default App;
