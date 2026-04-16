@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 
 /* ═══ CHARACTER PORTRAITS ════════════════════════════ */
 const PORTRAITS = {
@@ -6,104 +6,105 @@ const PORTRAITS = {
   friend_rich: '/images/char-rich.png',
   boss: '/images/char-boss.png',
   friend_hometown: '/images/char-hometown.png',
+  boy_que: '/images/boy_que.png',
 };
 
 const SCENARIOS = [
   {
     id: 1, act: 'CHƯƠNG 1', title: 'Minh của ngày đầu', tag: '🏠 Ký túc xá - Tuần 1',
     image: '/images/bg-dorm.png',
-    context: 'Minh vừa lên thành phố nhập học. Phòng trọ chật hẹp, tiền bạc eo hẹp, nhưng lòng đầy hào hứng. Cậu vẫn còn giữ nguyên nét giản dị, thật thà từ quê nhà.',
+    context: 'Ký túc xá, tuần đầu nhập học. Tiếng xe cộ ồn ào ngoài cửa sổ. Minh vừa lên thành phố. Phòng trọ chật, tiền ít, nhưng lòng đầy hào hứng với cuộc sống sinh viên.',
     character: { name: 'Thành (Bạn cùng phòng)', portrait: 'friend_rich', side: 'right' },
-    dialogue: '"Nay đi cafe "sang chảnh" mừng tuần đầu nhập học đi Minh! Chỗ này mới nổi, view đẹp lắm, chỉ khoảng 100k một ly thôi. Quẩy đi!"',
+    dialogue: '"Nay đi quán cà phê "hot trend" đắt tiền để check-in đi Minh! Chỗ này mới nổi, chỉ khoảng 100k một ly thôi. Quẩy đi!"',
     choices: [
       { 
-        label: 'A', icon: '🍃', text: '"Mình uống nước lọc thôi, tụi bạn cứ đi vui nhé"', 
+        label: 'A', text: '"Mình gọi nước lọc thôi, tụi bạn cứ uống vui vẻ nhé."', 
         type: 'integrity',
-        resultTitle: 'Sự kiên định đầu tiên', 
-        result: 'Bạn ở lại phòng, ăn gói mì tôm và đọc lại giáo trình. Minh vẫn là Minh, giản dị và trung thực với hoàn cảnh bản thân.', 
+        resultTitle: 'Minh vẫn là Minh', 
+        result: 'Bạn cười xòa, sống đúng với hoàn cảnh của mình. Lòng nhẹ nhõm dù ví tiền eo hẹp.', 
         concept: 'Tồn tại xã hội quyết định Ý thức', 
-        lesson: 'Lúc này, hoàn cảnh sinh hoạt vật chất còn khó khăn là yếu tố chính chi phối ý thức và sự lựa chọn của Minh.',
+        lesson: 'Lúc này, Minh vẫn giữ được bản ngã chân phương của mình.',
         score: 50 
       },
       { 
-        label: 'B', icon: '💳', text: 'Quẹt thẻ dù biết sẽ thiếu tiền ăn cuối tháng', 
-        type: 'adaptation',
-        resultTitle: 'Bước chân vào "thành thị"', 
-        result: 'Một buổi cafe hào hứng, nhưng cuối tháng Minh phải nhịn ăn. Những thay đổi đầu tiên về ý thức bắt đầu nảy mầm từ sức ép môi trường mới.', 
-        concept: 'Tồn tại xã hội biến đổi', 
-        lesson: 'Khi môi trường sống thay đổi, ý thức bắt đầu có những sự điều chỉnh để thích nghi, đôi khi là hy sinh các giá trị cũ.',
-        score: 30 
+        label: 'B', text: 'Mở app vay tạm tiền mua ly nước đắt nhất để chụp ảnh cùng mọi người', 
+        type: 'change',
+        resultTitle: 'Bắt đầu chạy theo hình thức', 
+        result: 'Ly nước lung linh trên ảnh, nhưng gánh nặng nợ nần bắt đầu nhen nhóm. Minh bắt đầu bị cuốn vào lối sống thành thị.', 
+        concept: 'Thay đổi Tồn tại xã hội', 
+        lesson: 'Khi môi trường sống thay đổi, ý thức bắt đầu có những sự biến chuyển đầu tiên.',
+        score: 10 
       },
     ],
   },
   {
     id: 2, act: 'CHƯƠNG 2', title: 'Môi trường bắt đầu "thấm"', tag: '💼 Công ty thực tập - 6 tháng sau',
     image: '/images/bg-office.png',
-    context: '6 tháng trôi qua, Minh đã vào nhóm bạn "sang" và thực tập tại một công ty lớn. Cậu bắt đầu thấy "lạc lõng" trước những món đồ hiệu và các mối quan hệ xã giao.',
+    context: '6 tháng sau. Minh lọt vào nhóm bạn "rich kid" và thực tập tại một công ty lớn. Ánh đèn văn phòng sáng chói. Xung quanh toàn đồ hiệu và những câu chuyện về "vốn liếng", "quan hệ".',
     character: { name: 'Sếp (Giám đốc)', portrait: 'boss', side: 'right' },
-    dialogue: '"Minh này, báo cáo này tốt rồi, nhưng em chỉnh số liệu "mượt" hơn chút để gây ấn tượng với khách hàng nhé. Chỉ là cách trình bày thôi mà, ai cũng vậy cả!"',
+    dialogue: '"Minh này, em chỉnh sửa báo cáo doanh thu "đẹp" hơn thực tế một chút nhé. Để dễ lùa khách hàng ký hợp đồng lớn ấy mà. Sếp bảo kê rồi, không ai phát hiện đâu!"',
     choices: [
       { 
-        label: 'A', icon: '⚖️', text: 'Từ chối, làm đúng số liệu thật', 
+        label: 'A', text: 'Từ chối khéo, nộp đúng số liệu thật', 
         type: 'integrity',
-        resultTitle: 'Giữ vững bản sắc', 
-        result: 'Sếp không hài lòng, nhưng bạn thấy thanh thản. Tuy nhiên, sự "lạc lõng" giữa các đồng nghiệp ngày càng rõ rệt hơn.', 
+        resultTitle: 'Giữ vững lương tâm', 
+        result: 'Sếp không hài lòng, nhưng bạn thấy thanh thản vì không làm trái lương tâm. Minh vẫn đang cố gắng giữ mình.', 
         concept: 'Tính độc lập tương đối của Ý thức', 
-        lesson: 'Dù tồn tại xã hội thay đổi, ý thức cũ vẫn có thể kháng cự nhờ vào sự tỉnh thức và nền tảng đạo đức vững vàng.',
+        lesson: 'Ý thức cũ vẫn có sức mạnh kháng cự sự tác động tiêu cực từ hoàn cảnh vật chất mới.',
         score: 50 
       },
       { 
-        label: 'B', icon: '✨', text: 'Sửa một chút — "chỉ là trình bày thôi mà"', 
+        label: 'B', text: 'Tặc lưỡi sửa một chút — "Chỉ là cách trình bày thôi mà"', 
         type: 'adaptation',
-        resultTitle: 'Sự thỏa hiệp âm thầm', 
-        result: 'Báo cáo được khen ngợi. Bạn tự nhủ "ai cũng vậy", nhưng trong gương, Minh trông có chút khác lạ, không còn là cậu sinh viên ngày nào.', 
-        concept: 'Ý thức thay đổi theo Tồn tại', 
-        lesson: 'Điều kiện làm việc và lợi ích vật chất mới đang dần thay đổi thế giới quan và phương châm sống của con người.',
-        score: 40 
+        resultTitle: 'Sự thỏa hiệp', 
+        result: 'Bạn tự nhủ chỉ là một chút thôi. Nhưng sự trung thực bắt đầu bị lung lay trước áp lực công việc.', 
+        concept: 'Sự đồng hóa của ý thức', 
+        lesson: 'Đời sống vật chất đang từ từ thấm vào từng lựa chọn nhỏ nhất.',
+        score: 30 
       },
       { 
-        label: 'C', icon: '🤝', text: 'Làm theo hoàn toàn — "ai cũng vậy cả"', 
+        label: 'C',  text: 'Chủ động "vẽ" thêm số liệu cho mượt', 
         type: 'change',
-        resultTitle: 'Hòa nhập hoàn toàn', 
-        result: 'Minh trở thành "ngôi sao" mới. Cậu nhận ra sự trung thực đôi khi chỉ là rào cản trong môi trường đầy rẫy sự tô vẽ này.', 
+        resultTitle: 'Thương trường là chiến trường', 
+        result: 'Bạn nhận được lời khen từ sếp. Minh đã bắt đầu chấp nhận luật chơi thực dụng của xã hội mới.', 
         concept: 'Tồn tại xã hội quyết định Ý thức', 
-        lesson: 'Khi hoàn cảnh sống thay đổi hoàn toàn, ý thức sẽ biến đổi để tương thích với phương thức sinh hoạt mới.',
+        lesson: 'Hoàn cảnh vật chất đã hoàn toàn thay đổi cách nhìn nhận đạo đức của Minh.',
         score: 10 
       },
     ],
   },
   {
-    id: 3, act: 'CHƯƠNG 2', title: 'Tiếng vọng từ quê nhà', tag: '📱 Tin nhắn chờ',
+    id: 3, act: 'CHƯƠNG 2', title: 'Tiếng vọng từ quá khứ', tag: '📱 Tin nhắn từ quê nhà',
     image: '/images/bg-cafe.png',
-    context: 'Đang ngồi trong quán cafe sang trọng cùng nhóm bạn mới, Minh nhận được tin nhắn từ Tùng - người bạn thuở nhỏ ở quê.',
-    character: { name: 'Tùng (Bạn ở quê)', portrait: 'friend_hometown', side: 'left' },
-    dialogue: '"Minh ơi, dưới quê mất mùa quá, nhà tớ kẹt tiền học phí. Cậu có thể cho tớ mượn một ít được không? Qua tháng nhà tớ bán lúa tớ gửi lại ngay..."',
+    context: 'Tối đó về nhà, người bạn thân cởi trần tắm mưa ngày xưa ở quê nhắn tin mượn một ít tiền đóng học phí gấp vì gia đình gặp chuyện.',
+    character: { name: 'Tùng (Bạn ở quê)', portrait: 'boy_que', side: 'left' },
+    dialogue: '"Minh ơi, nhà tớ kẹt quá. Cậu cho tớ mượn một ít nộp học phí được không? Tớ sẽ cố gắng trả sớm..."',
     choices: [
       { 
-        label: 'A', icon: '🧧', text: 'Gửi ngay dù mình cũng đang cần', 
+        label: 'A', text: 'Chuyển khoản ngay phần lớn số tiền mình có', 
         type: 'integrity',
-        resultTitle: 'Tình quê còn đọng', 
-        result: 'Minh chấp nhận rời cuộc vui sớm để chuyển tiền. Một nửa tháng lương thực tập đã đi, nhưng lòng bạn ấm áp vì vẫn giữ được sự chân thành.', 
-        concept: 'Ý thức tác động trở lại Tồn tại', 
-        lesson: 'Những giá trị đạo đức bền vững có thể giúp con người vượt qua những lôi cuốn vật chất nhất thời.',
+        resultTitle: 'Tình bạn xuyên thời gian', 
+        result: 'Dù bản thân cũng đang kẹt tiền nhà, bạn vẫn ưu tiên người bạn cũ. Minh vẫn còn đó nét chân thành ngày nào.', 
+        concept: 'Bản chất con người', 
+        lesson: 'Những giá trị tinh thần vẫn có thể vượt qua áp lực vật chất.',
         score: 50 
       },
       { 
-        label: 'B', icon: '⏳', text: '"Để tháng sau mình có lương rồi tính"', 
+        label: 'B',  text: '"Để cuối tháng mình có lương rồi tính nhé"', 
         type: 'adaptation',
-        resultTitle: 'Sự trì hoãn khéo léo', 
-        result: 'Bạn tiếp tục cuộc vui và quên bẵng đi. Tùng sau đó đã mượn được chỗ khác, nhưng sợi dây liên kết giữa hai người đã mờ đi một chút.', 
-        concept: 'Sự tha hóa của ý thức', 
-        lesson: 'Khi điều kiện sống thay đổi, những mối quan tâm cũ thường bị đẩy lùi phía sau các lợi ích hiện tại.',
+        resultTitle: 'Sự ưu tiên mới', 
+        result: 'Trong tài khoản vẫn dư dả, nhưng bạn chọn cách trì hoãn. Minh đã bắt đầu tính toán hơn cho lợi ích cá nhân.', 
+        concept: 'Sự tha hóa nhẹ', 
+        lesson: 'Ý thức bắt đầu bị chi phối bởi lợi ích vật chất cá nhân trước mắt.',
         score: 30 
       },
       { 
-        label: 'C', icon: '🌫️', text: 'Đọc rồi… không trả lời', 
+        label: 'C',  text: 'Đọc tin nhắn (Seen) nhưng… lờ đi không trả lời', 
         type: 'change',
-        resultTitle: 'Cắt đứt quá khứ', 
-        result: 'Minh cảm thấy phiền vì những rắc rối "nhà quê". Cậu lướt qua tin nhắn để quay lại với những câu chuyện về Stock và Connection.', 
-        concept: 'Sự biến đổi bản chất của ý thức', 
-        lesson: 'Địa vị xã hội mới đã thay đổi hoàn toàn cách con người nhìn nhận các quan hệ xã hội trong quá khứ.',
+        resultTitle: 'Quen với hào nhoáng', 
+        result: 'Bạn tiếp tục lướt xem ảnh du lịch của đồng nghiệp và quên hẳn tin nhắn. Minh đã thực sự đổi thay.', 
+        concept: 'Hoàn thiện tha hóa', 
+        lesson: 'Địa vị xã hội mới đã xóa nhòa những sợi dây liên kết trong sáng cũ.',
         score: 0 
       },
     ],
@@ -111,36 +112,36 @@ const SCENARIOS = [
   {
     id: 4, act: 'CHƯƠNG 3', title: 'Nhìn lại gương', tag: '🏢 Cuối năm thứ 2',
     image: '/images/bg-office.png',
-    context: 'Minh giờ đã là một sinh viên "Elite", có việc làm tốt và nằm trong nhóm xuất sắc của trường. Một sinh viên năm nhất vừa từ quê lên đến nhờ bạn giúp đỡ.',
-    character: { name: 'Bảo (Sinh viên năm nhất)', portrait: 'friend_hometown', side: 'left' },
-    dialogue: '"Anh Minh ơi, em nghe nói công ty anh đang tuyển thực tập. Em cũng từ tỉnh lên, chưa có kinh nghiệm nhưng ham học lắm... Anh giúp em giới thiệu được không?"',
+    context: 'Cuối năm 2. Minh nay đã có mức thu nhập tốt, khoác lên người những bộ đồ đắt tiền, chính thức hòa nhập vào nhóm "elite" của trường.',
+    character: { name: 'Bảo (Người bạn cũ)', portrait: 'friend_hometown', side: 'left' },
+    dialogue: '"Anh Minh ơi, sếp bảo không thích dân tỉnh lẻ lúa lúa, đưa em vào sẽ làm thấp giá trị kỳ thực tập của anh. Anh có thể nói đỡ giúp em được không?"',
     choices: [
       { 
-        label: 'A', icon: '🤝', text: 'Giới thiệu thẳng, nói thật về bạn', 
+        label: 'A', text: 'Dõng dạc bảo vệ bạn mình và rút đơn nếu cần', 
         type: 'integrity',
-        resultTitle: 'Tìm lại chính mình', 
-        result: 'Dù sếp không thích "dân tỉnh lẻ", bạn kiên quyết bảo vệ Bảo. Bạn thấy lại hình ảnh mình của năm nhất trong mắt cậu bé ấy.', 
-        concept: 'Tỉnh thức trước sự thay đổi', 
-        lesson: 'Con người có khả năng tự nhận thức và điều chỉnh ý thức để không bị hoàn cảnh hoàn toàn đồng hóa.',
+        resultTitle: 'Thức tỉnh', 
+        result: 'Bạn dám bước ra để xây dựng một con đường mới tôn trọng giá trị con người. Ý thức đã chiến thắng hoàn cảnh.', 
+        concept: 'Sự giác ngộ ý thức', 
+        lesson: 'Ý thức xã hội có khả năng tác động ngược lại và cải tạo tồn tại xã hội.',
         score: 60 
       },
       { 
-        label: 'B', icon: '☁️', text: '"Để mình hỏi thử" rồi… quên mất', 
+        label: 'B',  text: '"Để mình hỏi thử sếp xem sao" rồi… im lặng phớt lờ', 
         type: 'adaptation',
-        resultTitle: 'Sự trôi dạt vô hình', 
-        result: 'Bạn không ác ý, nhưng những deadline và tiệc tùng đã xóa nhòa lời hứa. Bảo lặng lẽ rời đi, còn Minh vẫn tiếp tục vòng xoáy của mình.', 
-        concept: 'Thích nghi thụ động', 
-        lesson: 'Đa số sự thay đổi không đến từ quyết định lớn, mà từ ngàn lần nhỏ buông tay trước đời sống.',
-        score: 40 
+        resultTitle: 'Sự hèn nhát thầm lặng', 
+        result: 'Bạn sợ hỏng tiền đồ cá nhân nên đã chọn cách im lặng. Minh nay đã hoàn toàn thỏa hiệp với thực tại.', 
+        concept: 'Sự giằng xé', 
+        lesson: 'Ý thức đã dần bị đồng hóa hoàn toàn bởi môi trường thực dụng.',
+        score: 20 
       },
       { 
-        label: 'C', icon: '🚪', text: '"Bạn nên tự nộp CV đi, chỗ này khó lắm"', 
+        label: 'C',  text: '"Bạn nên tự nộp CV đi, chỗ này chỉ tuyển người profile đẹp thôi"', 
         type: 'change',
-        resultTitle: 'Cánh cửa đóng sầm', 
-        result: 'Bạn sợ ảnh hưởng hình ảnh "sang chảnh" của mình nếu bảo lãnh cho một cậu bé nghèo. Minh đã hoàn toàn trở thành một con người khác.', 
-        concept: 'Hoàn thiện quá trình tha hóa', 
-        lesson: 'Khi ý thức bị chiếm hữu hoàn toàn bởi các giá trị vật chất mới, con người có thể quay lưng với chính nguồn cội của mình.',
-        score: 10 
+        resultTitle: 'Sự trôi dạt hoàn toàn', 
+        result: 'Bạn nhìn người bạn cũ bằng ánh mắt kẻ cả. Minh trong gương giờ đã là một người hoàn toàn khác.', 
+        concept: 'Tha hóa hoàn toàn', 
+        lesson: 'Tồn tại xã hội mới đã hoàn toàn tái cấu trúc lại ý thức con người.',
+        score: 0 
       },
     ],
   },
@@ -279,12 +280,17 @@ export default function GearOfEra() {
         {phase === 'cinematic' && <Cinematic onDone={() => setPhase('rules')} />}
         {phase === 'rules' && <RulesScreen onStart={() => setPhase('game')} />}
         {phase === 'game' && <GameScreen scenario={scenario} onChoice={handleChoice} emotion={emotion} />}
-        {phase === 'result' && <ResultScreen choice={scenario.choices[picked]} onNext={() => setPhase('lesson')} />}
-        {phase === 'lesson' && <LessonScreen choice={scenario.choices[picked]} 
+        {phase === 'result' && <ResultScreen choice={scenario.choices[picked]} 
           onNext={() => {
-            if (idx + 1 < SCENARIOS.length) { setIdx(idx + 1); setPicked(null); setPhase('game'); }
-            else setPhase('end');
-          }} isLast={idx === SCENARIOS.length - 1} />}
+            if (idx + 1 < SCENARIOS.length) { 
+              setIdx(idx + 1); 
+              setPicked(null); 
+              setPhase('game'); 
+            } else {
+              setPhase('end');
+            }
+          }} 
+        />}
         {phase === 'end' && <EndScreen counts={counts} onRestart={restart} />}
       </div>
     </div>
@@ -391,55 +397,45 @@ function ResultScreen({ choice, onNext }) {
       <div style={{ maxWidth: 600, padding: 50, animation: 'fadeUp 0.5s ease both', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 32, background: 'rgba(255,255,255,0.02)' }}>
         <h2 style={{ fontSize: 36, color: 'gold', marginBottom: 30, fontWeight: 900 }}>{choice.resultTitle}</h2>
         <p style={{ fontSize: 20, lineHeight: 1.8, marginBottom: 50, color: '#e5e7eb' }}>{choice.result}</p>
-        <button onClick={onNext} style={{ padding: '18px 50px', background: '#fff', border: 'none', borderRadius: 50, fontWeight: 900, cursor: 'pointer', color: '#000' }}>Kiến thức triết học →</button>
+        <button onClick={onNext} style={{ padding: '18px 50px', background: '#fff', border: 'none', borderRadius: 50, fontWeight: 900, cursor: 'pointer', color: '#000' }}>TIẾP TỤC →</button>
       </div>
     </div>
   );
 }
 
-function LessonScreen({ choice, onNext, isLast }) {
-  return (
-    <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', background: '#000' }}>
-      <div className="marx-card" style={{ maxWidth: 650, padding: '60px 50px', borderRadius: 0, animation: 'fadeUp 0.6s ease both' }}>
-        <h3 style={{ color: 'gold', fontSize: 24, fontWeight: 900, marginBottom: 30, letterSpacing: 4 }}>Kiến thức triết học</h3>
-        <p style={{ color: 'gold', fontSize: 13, fontWeight: 900, marginBottom: 15, letterSpacing: 2 }}>"{choice.concept}"</p>
-        <p style={{ fontSize: 20, lineHeight: 1.9, color: '#fff', marginBottom: 50, fontStyle: 'italic' }}>
-          "{choice.lesson}"
-        </p>
-        <button onClick={onNext} style={{ padding: '15px 50px', background: 'gold', border: 'none', borderRadius: 0, fontWeight: 900, cursor: 'pointer', color: '#000' }}>
-          {isLast ? 'XEM KẾT THÚC' : 'TIẾP TỤC'}
-        </button>
-      </div>
-    </div>
-  );
-}
+/* LessonScreen removed as requested */
 
 function EndScreen({ counts, onRestart }) {
-  let title = "Vẫn là Minh";
-  let condition = "Giữ vững giá trị";
-  let message = "Đời sống đầy rẫy những thử thách, nhưng ý thức có thể kháng cự sự tha hóa nếu ta luôn tỉnh thức và giữ được bản sắc cốt lõi.";
+  let title = "🌟 KẾT CỤC 1: VẪN LÀ MÌNH";
+  let message = "Nhận diện được sự độc hại của môi trường, Minh không chỉ giữ được bản ngã mà còn dám bước ra để xây dựng một con đường mới. Ý thức đã chiến thắng hoàn cảnh.";
+  let card = "Ý thức xã hội có tính độc lập tương đối. Sự giác ngộ giúp con người không đầu hàng hoàn cảnh vật chất, mà quay lại hành động để cải tạo thực tại.";
   let color = "#4ade80";
 
-  if (counts.change >= 2 || (counts.change >= 1 && counts.adaptation >= 2)) {
-    title = "Minh đã trôi";
-    condition = "Thích nghi thụ động";
-    message = "Không có quyết định lớn nào làm con người thay đổi, chỉ là ngàn lần nhỏ buông tay trước đời sống. Minh đã trở thành một phần của hệ thống mà cậu từng xa lạ.";
+  if (counts.adaptation + counts.change >= 3) {
+    title = "🥀 KẾT CỤC 3: MINH ĐÃ TRÔI";
+    message = "Không có quyết định sinh tử nào đánh gục ta — chỉ là ngàn lần ta tự động buông tay trước mãnh lực của đồng tiền và danh vọng. Minh trong gương giờ đã là một người khác.";
+    card = "Không phải ý thức quyết định đời sống mà chính đời sống quyết định ý thức. Ý thức xã hội thường lạc hậu hơn tồn tại xã hội. Ta dễ dàng tha hóa bản ngã trước khi kịp nhận ra môi trường vật chất xung quanh đã hoàn toàn đổi thay.";
     color = "#f87171";
-  } else if (counts.adaptation >= 2 || counts.change >= 1) {
-    title = "Minh đang giữa dòng";
-    condition = "Lựa chọn lẫn lộn";
-    message = "Phần lớn chúng ta đều ở đây — không hoàn toàn mất mình, cũng chưa hoàn toàn tỉnh. Cuộc chiến giữa thực tại và lý tưởng vẫn đang tiếp diễn.";
+  } else if (counts.integrity < 3) {
+    title = "⚖️ KẾT CỤC 2: MINH ĐANG GIỮA DÒNG";
+    message = "Phần lớn chúng ta đều ở đây — không hoàn toàn mất đi bản ngã trong sáng cũ, nhưng cũng đã dần thỏa hiệp và quen thuật với sự thực dụng của thực tại mới.";
+    card = "Sự giằng xé giữa tàn dư của tư duy cũ và hoàn cảnh vật chất mới. Ý thức chưa hoàn toàn bị đồng hóa, nhưng cũng chưa đủ sức mạnh để thay đổi tồn tại xã hội.";
     color = "gold";
   }
 
   return (
-     <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', background: 'radial-gradient(circle, #1a1a1a 0%, #000 100%)' }}>
-      <div style={{ animation: 'fadeUp 1s ease both', maxWidth: 750, padding: 40 }}>
-        <h2 style={{ fontSize: 22, color: '#9ca3af', marginBottom: 20, letterSpacing: 4 }}>KẾT THÚC</h2>
-        <div style={{ fontSize: 72, fontWeight: 900, color: color, textShadow: `0 0 40px ${color}33`, lineHeight: 1.2, marginBottom: 10 }}>{title}</div>
-        <p style={{ color: color, fontWeight: 900, fontSize: 14, marginBottom: 40, letterSpacing: 2 }}>[{condition}]</p>
-        <p style={{ fontSize: 22, lineHeight: 1.8, color: '#d1d5db', marginBottom: 60, fontStyle: 'italic', background: 'rgba(255,255,255,0.03)', padding: 30, borderRadius: 20 }}>"{message}"</p>
-        <button onClick={onRestart} style={{ padding: '20px 80px', background: 'gold', color: '#000', border: 'none', borderRadius: 50, fontWeight: 900, cursor: 'pointer', boxShadow: '0 10px 40px rgba(212,175,55,0.3)', fontSize: 18 }}>CHƠI LẠI</button>
+    <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', background: 'radial-gradient(circle, #1a1a1a 0%, #000 100%)' }}>
+      <div style={{ animation: 'fadeUp 1s ease both', maxWidth: 800, padding: 40 }}>
+        <h2 style={{ fontSize: 22, color: '#9ca3af', marginBottom: 20, letterSpacing: 4 }}>KẾT THÚC HÀNH TRÌNH</h2>
+        <div style={{ fontSize: 48, fontWeight: 900, color: color, textShadow: `0 0 40px ${color}33`, lineHeight: 1.2, marginBottom: 30 }}>{title}</div>
+        <p style={{ fontSize: 22, lineHeight: 1.8, color: '#d1d5db', marginBottom: 50, fontStyle: 'italic', background: 'rgba(255,255,255,0.03)', padding: 30, borderRadius: 20 }}>"{message}"</p>
+        
+        <div className="marx-card" style={{ padding: '30px', textAlign: 'left', borderLeft: `8px solid ${color}`, background: 'rgba(0,0,0,0.5)', marginBottom: 50 }}>
+          <p style={{ color: 'gold', fontWeight: 900, fontSize: 13, marginBottom: 15, letterSpacing: 2 }}>🃏 GÓC NHÌN CỦA MARX</p>
+          <p style={{ fontSize: 18, lineHeight: 1.6, color: '#fff' }}>"{card}"</p>
+        </div>
+
+        <button onClick={onRestart} style={{ padding: '18px 70px', background: 'gold', color: '#000', border: 'none', borderRadius: 50, fontWeight: 900, cursor: 'pointer', boxShadow: '0 10px 40px rgba(212,175,55,0.3)', fontSize: 18 }}>CHƠI LẠI</button>
       </div>
     </div>
   );
