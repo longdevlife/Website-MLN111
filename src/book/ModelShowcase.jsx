@@ -5,12 +5,12 @@ import { useAtom } from "jotai";
 import { Box3, Vector3 } from "three";
 import { pageAtom, viewModeAtom } from "./UI";
 
-// PRELOAD — tải trước tất cả model ngay khi module được import
-useGLTF.preload("/models/nongnghiep.glb");
-useGLTF.preload("/models/cloude.glb");
-useGLTF.preload("/models/nhamay.glb");
-useGLTF.preload("/models/model1.glb");
-useGLTF.preload("/models/vuongmien.glb");
+// PRELOAD
+useGLTF.preload("/models/bust_of_the_ancient_greek_philosopher_socrates.glb");
+useGLTF.preload("/models/globe.glb");
+useGLTF.preload("/models/Marx.glb");
+useGLTF.preload("/models/astrolabe_-_medieval_-_reconstruction.glb");
+useGLTF.preload("/models/vladimir_lenin_portrait_monument.glb");
 
 /* ══════════════════════════════════════════════
    GenericGLBShowcase — auto-scale + auto-center
@@ -83,13 +83,13 @@ const ShowcaseWrapper = ({ visible, children }) => {
 };
 
 /* ══════════════════════════════════════════════
-   ModelShowcase — TẤT CẢ model luôn mounted
-   ShowcaseWrapper xử lý ẩn/hiện bằng scale animation
+   ModelShowcase — Hiện tại chưa có model nào
+   Sẽ thêm khi tải model mới về public/models/
    ══════════════════════════════════════════════ */
 export const ModelShowcase = () => {
   const [page] = useAtom(pageAtom);
   const [viewMode] = useAtom(viewModeAtom);
-  const hasModel = page >= 1 && page <= 4 && viewMode === "showcase";
+  const hasModel = page >= 1 && page <= 5 && viewMode === "showcase";
 
   const groupRef = useRef();
   const prog = useRef(0);
@@ -128,24 +128,24 @@ export const ModelShowcase = () => {
         />
       )}
 
-      {/* Tất cả model luôn mounted, ShowcaseWrapper ẩn/hiện bằng scale */}
       <ShowcaseWrapper visible={page === 1 && viewMode === "showcase"}>
-        <group>
-          <GenericGLBShowcase url="/models/nongnghiep.glb" targetSize={0.8} />
-          <GenericGLBShowcase url="/models/cloude.glb" targetSize={0.45} positionOffset={[0, 0.5, 0]} />
-        </group>
+        <GenericGLBShowcase url="/models/bust_of_the_ancient_greek_philosopher_socrates.glb" targetSize={0.8} />
       </ShowcaseWrapper>
 
       <ShowcaseWrapper visible={page === 2 && viewMode === "showcase"}>
-        <GenericGLBShowcase url="/models/nhamay.glb" targetSize={0.8} />
+        <GenericGLBShowcase url="/models/globe.glb" targetSize={0.8} />
       </ShowcaseWrapper>
 
       <ShowcaseWrapper visible={page === 3 && viewMode === "showcase"}>
-        <GenericGLBShowcase url="/models/model1.glb" targetSize={0.8} />
+        <GenericGLBShowcase url="/models/Marx.glb" targetSize={1.2} positionOffset={[0, -0.2, 0]} />
       </ShowcaseWrapper>
 
       <ShowcaseWrapper visible={page === 4 && viewMode === "showcase"}>
-        <GenericGLBShowcase url="/models/vuongmien.glb" targetSize={0.8} />
+        <GenericGLBShowcase url="/models/astrolabe_-_medieval_-_reconstruction.glb" targetSize={0.8} />
+      </ShowcaseWrapper>
+
+      <ShowcaseWrapper visible={page === 5 && viewMode === "showcase"}>
+        <GenericGLBShowcase url="/models/vladimir_lenin_portrait_monument.glb" targetSize={0.8} />
       </ShowcaseWrapper>
     </group>
   );

@@ -16,21 +16,21 @@ export const pages = [
 
 const pageLabels = [
   "Bìa",
-  "Lý thuyết",
-  "Công nhân",
-  "Sinh viên",
-  "Doanh nhân",
+  "Nền tảng",
+  "Tồn tại XH",
+  "Ý thức XH",
+  "Biện chứng",
   "Tổng kết",
   "Bìa sau",
 ];
 
 const pageTitles = [
   null,
-  "Tồn tại xã hội & Ý thức xã hội",
-  "Công nhân KCN — Bình Dương",
-  "Sinh viên — Đời sống học đường",
-  "Doanh nhân — Đạo đức kinh doanh",
-  "Tổng kết — Mối quan hệ biện chứng",
+  "Nền tảng — Chủ nghĩa duy vật lịch sử",
+  "Thực tại — Khái niệm Tồn tại xã hội",
+  "Hệ tư tưởng — Kết cấu Ý thức xã hội",
+  "Quy luật — Tính độc lập tương đối",
+  "Tổng kết — Triết học Mác - Lênin",
   null,
 ];
 

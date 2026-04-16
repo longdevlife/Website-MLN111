@@ -9,11 +9,12 @@ import { a, useSpring } from "@react-spring/three";
 // ║  PRELOAD TẤT CẢ MODEL NGAY KHI APP KHỞI ĐỘNG  ║
 // ║  => Không bao giờ hiện loading khi lật trang    ║
 // ╚══════════════════════════════════════════════╝
-useGLTF.preload("/models/nongnghiep.glb");
-useGLTF.preload("/models/cloude.glb");
-useGLTF.preload("/models/nhamay.glb");
-useGLTF.preload("/models/model1.glb");
-useGLTF.preload("/models/vuongmien.glb");
+// TODO: Thêm preload khi có model mới
+// useGLTF.preload("/models/socrates.glb");
+// useGLTF.preload("/models/globe.glb");
+// useGLTF.preload("/models/relief.glb");
+// useGLTF.preload("/models/astrolabe.glb");
+// useGLTF.preload("/models/lenin.glb");
 
 /** Generic GLB Loader — auto-scales and auto-centers the 3D model */
 const GenericGLBPopup = ({
@@ -93,33 +94,29 @@ export const PopupElements = () => {
 
   return (
     <group position={[0, 0.1, 0]} rotation={[Math.PI / 4, 0, 0]}>
-      {/* Page 1: Tồn tại XH (Nông nghiệp) + Ý thức XH (Cloud) */}
+      {/* Cặp 1 - Nền tảng (Trường học Athens): socrates.glb */}
       <PopupWrapper visible={page === 1} riseHeight={0.3}>
-        {page === 1 && (
-          <group>
-            <GenericGLBPopup url="/models/nongnghiep.glb" />
-            <GenericGLBPopup
-              url="/models/cloude.glb"
-              targetSize={0.375}
-              positionOffset={[0, 0.375, 0]}
-            />
-          </group>
-        )}
+        {page === 1 && <GenericGLBPopup url="/models/bust_of_the_ancient_greek_philosopher_socrates.glb" />}
       </PopupWrapper>
 
-      {/* Page 2: Công nhân — Nhà máy */}
+      {/* Cặp 2 - Tồn tại XH (Hoàn cảnh địa lý): globe.glb */}
       <PopupWrapper visible={page === 2} riseHeight={0.25}>
-        {page === 2 && <GenericGLBPopup url="/models/nhamay.glb" />}
+        {page === 2 && <GenericGLBPopup url="/models/globe.glb" />}
       </PopupWrapper>
 
-      {/* Page 3: Sinh viên */}
+      {/* Cặp 3 - Ý thức XH (Đám đông giương cờ): Marx.glb */}
       <PopupWrapper visible={page === 3} riseHeight={0.3}>
-        {page === 3 && <GenericGLBPopup url="/models/model1.glb" />}
+        {page === 3 && <GenericGLBPopup url="/models/Marx.glb" targetSize={1.4} positionOffset={[0, -0.2, 0]} />}
       </PopupWrapper>
 
-      {/* Page 4: Doanh nhân — Vương miện */}
+      {/* Cặp 4 - Biện chứng (La bàn / Astrolabe): astrolabe.glb */}
       <PopupWrapper visible={page === 4} riseHeight={0.35}>
-        {page === 4 && <GenericGLBPopup url="/models/vuongmien.glb" />}
+        {page === 4 && <GenericGLBPopup url="/models/astrolabe_-_medieval_-_reconstruction.glb" />}
+      </PopupWrapper>
+
+      {/* Cặp 5 - Tổng kết (Lenin diễn thuyết): lenin.glb */}
+      <PopupWrapper visible={page === 5} riseHeight={0.3}>
+        {page === 5 && <GenericGLBPopup url="/models/vladimir_lenin_portrait_monument.glb" />}
       </PopupWrapper>
     </group>
   );

@@ -5,8 +5,8 @@ import { Experience } from "./Experience";
 import { UI } from "./UI";
 import { IntroScreen } from "./IntroScreen";
 
-export const BookPage = () => {
-  const [isStarted, setIsStarted] = useState(false);
+export const BookPage = ({ skipIntro = false }) => {
+  const [isStarted, setIsStarted] = useState(skipIntro);
 
   return (
     <>

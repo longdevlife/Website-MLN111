@@ -19,7 +19,7 @@ function getActiveTab() {
 
 function App() {
   const [activeTab, setActiveTab] = useState(getActiveTab);
-
+  const [hasVisitedBook, setHasVisitedBook] = useState(false);
 
   // React to browser back/forward and hash changes
   useEffect(() => {
@@ -33,6 +33,7 @@ function App() {
   }, []);
 
   const handleTabChange = (id) => {
+    if (id === "book") setHasVisitedBook(true);
     setActiveTab(id);
     window.location.hash = id;
   };
@@ -42,7 +43,7 @@ function App() {
       <Navbar activeTab={activeTab} onTabChange={handleTabChange} />
       {/* Tab Content */}
       <div style={{ width: "100%", minHeight: "100vh" }}>
-        {activeTab === "book" && <BookPage />}
+        {activeTab === "book" && <BookPage skipIntro={hasVisitedBook} />}
         {activeTab === "game" && <GamePage />}
         {activeTab === "ai" && <AIUsagePage />}
       </div>
