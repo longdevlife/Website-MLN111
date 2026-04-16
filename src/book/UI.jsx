@@ -6,31 +6,31 @@ export const pageAtom = atom(0);
 export const viewModeAtom = atom("showcase"); // "showcase" | "reading"
 
 export const pages = [
-  { front: "book-cover", back: "page1-intro" },
-  { front: "page2-theory1", back: "page3-theory2" },
-  { front: "page4-scenario1", back: "page5-result1" },
-  { front: "page6-scenario2", back: "page7-result2" },
-  { front: "page8-scenario3", back: "page9-result3" },
-  { front: "page10-conclusion", back: "book-back" },
+  { front: "Coverpage_open", back: "Open 1" },
+  { front: "Open 2", back: "46_Page_1" },
+  { front: "46_Page_2", back: "47_Page_1" },
+  { front: "47_Page_2", back: "48_Page_1" },
+  { front: "48_Page_2", back: "Close 1" },
+  { front: "Close 2", back: "Coverpage_close" },
 ];
 
 const pageLabels = [
   "Bìa",
-  "Lý thuyết",
-  "Công nhân",
-  "Sinh viên",
-  "Doanh nhân",
+  "Nền tảng",
+  "Tồn tại XH",
+  "Ý thức XH",
+  "Biện chứng",
   "Tổng kết",
   "Bìa sau",
 ];
 
 const pageTitles = [
   null,
-  "Tồn tại xã hội & Ý thức xã hội",
-  "Công nhân KCN — Bình Dương",
-  "Sinh viên — Đời sống học đường",
-  "Doanh nhân — Đạo đức kinh doanh",
-  "Tổng kết — Mối quan hệ biện chứng",
+  "Nền tảng — Chủ nghĩa duy vật lịch sử",
+  "Thực tại — Khái niệm Tồn tại xã hội",
+  "Hệ tư tưởng — Kết cấu Ý thức xã hội",
+  "Quy luật — Tính độc lập tương đối",
+  "Tổng kết — Triết học Mác - Lênin",
   null,
 ];
 
