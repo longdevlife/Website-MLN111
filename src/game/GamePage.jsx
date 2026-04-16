@@ -10,7 +10,8 @@ export const GamePage = () => {
   useScrollReveal();
 
   return (
-    <div className="theory-page-container" style={{ width: '100%', minHeight: '100vh', scrollBehavior: 'smooth' }}>
+    <div className="theory-page-container" style={{ width: '100%', minHeight: '100vh', scrollBehavior: 'smooth', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+      <style>{`.theory-page-container::-webkit-scrollbar { display: none; }`}</style>
       <Hero />
 
 
@@ -21,9 +22,7 @@ export const GamePage = () => {
       <GearOfEra />
        </section>
 
-      <footer className="footer">
-        <p>&copy; 2026 <strong>Triết học Mác – Lê-nin</strong>. Tài liệu học tập.</p>
-      </footer>
+     
     </div>
   );
 };
