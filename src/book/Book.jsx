@@ -86,18 +86,14 @@ const pageMaterials = [
 ];
 
 pages.forEach((page) => {
-  useTexture.preload(`/textures/${page.front}.jpg`);
-  useTexture.preload(`/textures/${page.back}.jpg`);
-  useTexture.preload(`/textures/book-cover-roughness.jpg`);
+  useTexture.preload(`/textures/${page.front}.png`);
+  useTexture.preload(`/textures/${page.back}.png`);
 });
 
 const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
-  const [picture, picture2, pictureRoughness] = useTexture([
-    `/textures/${front}.jpg`,
-    `/textures/${back}.jpg`,
-    ...(number === 0 || number === pages.length - 1
-      ? [`/textures/book-cover-roughness.jpg`]
-      : []),
+  const [picture, picture2] = useTexture([
+    `/textures/${front}.png`,
+    `/textures/${back}.png`,
   ]);
   picture.colorSpace = picture2.colorSpace = SRGBColorSpace;
   const group = useRef();
@@ -127,26 +123,14 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
       new MeshStandardMaterial({
         color: whiteColor,
         map: picture,
-        ...(number === 0
-          ? {
-              roughnessMap: pictureRoughness,
-            }
-          : {
-              roughness: 0.1,
-            }),
+        roughness: 0.1,
         emissive: emissiveColor,
         emissiveIntensity: 0,
       }),
       new MeshStandardMaterial({
         color: whiteColor,
         map: picture2,
-        ...(number === pages.length - 1
-          ? {
-              roughnessMap: pictureRoughness,
-            }
-          : {
-              roughness: 0.1,
-            }),
+        roughness: 0.1,
         emissive: emissiveColor,
         emissiveIntensity: 0,
       }),
